@@ -98,25 +98,31 @@ namespace лаба_ооп4._2
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(80, 236);
+            this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(100, 56);
             this.trackBar1.TabIndex = 6;
+            this.trackBar1.TickFrequency = 10;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // trackBar2
             // 
             this.trackBar2.Location = new System.Drawing.Point(270, 236);
+            this.trackBar2.Maximum = 100;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(100, 56);
             this.trackBar2.TabIndex = 7;
+            this.trackBar2.TickFrequency = 10;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // trackBar3
             // 
             this.trackBar3.Location = new System.Drawing.Point(459, 236);
+            this.trackBar3.Maximum = 100;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Size = new System.Drawing.Size(100, 56);
             this.trackBar3.TabIndex = 8;
+            this.trackBar3.TickFrequency = 10;
             this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
             // label1
