@@ -18,34 +18,35 @@ namespace лаба_ооп4._2
             InitializeComponent();
             model = new Model();
             model.observes += new System.EventHandler(this.UpdateFromModel);
+            trackBar1.Scroll += trackBar1_Scroll;
+            trackBar2.Scroll += trackBar2_Scroll;
+            trackBar3.Scroll += trackBar3_Scroll;
+
+            textBox1.DataBindings.Add("Text", Properties.Settings.Default, "a");
+            textBox2.DataBindings.Add("Text", Properties.Settings.Default, "b");
+            textBox3.DataBindings.Add("Text", Properties.Settings.Default, "c");
+
+
+            numericUpDown1.DataBindings.Add("Text", Properties.Settings.Default, "a");
+            numericUpDown2.DataBindings.Add("Text", Properties.Settings.Default, "b");
+            numericUpDown3.DataBindings.Add("Text", Properties.Settings.Default, "c");
+
+            trackBar1.DataBindings.Add("Text", Properties.Settings.Default, "a");
+            trackBar2.DataBindings.Add("Text", Properties.Settings.Default, "b");
+            trackBar3.DataBindings.Add("Text", Properties.Settings.Default, "c");
+
+            this.FormClosing += (o, e) => Properties.Settings.Default.Save();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
-
-        private void UpdateFromModel(object sender, EventArgs e)
-        {
-            textBox1.Text = model.getA().ToString();
-            numericUpDown1.Value = model.getA();
-            trackBar1.Value = model.getA();
-
-            textBox2.Text = model.getB().ToString();
-            numericUpDown2.Value = model.getB();
-            trackBar2.Value = model.getB();
-
-            textBox3.Text = model.getC().ToString();
-            numericUpDown3.Value = model.getC();
-            trackBar3.Value = model.getC();
-        }
-
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 model.setA(Convert.ToInt32(textBox1.Text));
-
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -87,6 +88,20 @@ namespace лаба_ооп4._2
             model.setC(Decimal.ToInt32(trackBar3.Value));
         }
 
+        private void UpdateFromModel(object sender, EventArgs e)
+        {
+            textBox1.Text = model.getA().ToString();
+            numericUpDown1.Value = model.getA();
+            trackBar1.Value = model.getA();
+
+            textBox2.Text = model.getB().ToString();
+            numericUpDown2.Value = model.getB();
+            trackBar2.Value = model.getB();
+
+            textBox3.Text = model.getC().ToString();
+            numericUpDown3.Value = model.getC();
+            trackBar3.Value = model.getC();
+        }
     }
 
     public class Model
