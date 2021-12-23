@@ -21,5 +21,44 @@ namespace лаба_ооп4._2
         {
 
         }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public class Model
+    {
+        int a, b, c;
+        public System.EventHandler observes;
+        public void setA(int a)
+        {
+            if (a > c)
+                this.a = c;
+            else
+                this.a = a;
+            Properties.Settings.Default.a = a;
+            observes.Invoke(this, null);
+
+        }
+        public void setB(int b)
+        {
+            if (b <= c && b >= a)
+                this.b = b;
+            else
+                this.b = a;
+            Properties.Settings.Default.b = b;
+            observes.Invoke(this, null);
+
+        }
+        public void setC(int c)
+        {
+            this.c = c;
+            Properties.Settings.Default.c = c;
+            observes.Invoke(this, null);
+
+        }
+
     }
 }
