@@ -84,6 +84,7 @@ namespace лаба_ооп4._2
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(100, 22);
             this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // numericUpDown3
             // 
@@ -106,6 +107,7 @@ namespace лаба_ооп4._2
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(100, 56);
             this.trackBar2.TabIndex = 7;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // trackBar3
             // 

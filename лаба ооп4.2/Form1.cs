@@ -25,10 +25,6 @@ namespace лаба_ооп4._2
 
         }
 
-        private void trackBar3_Scroll(object sender, EventArgs e)
-        {
-
-        }
 
         private void UpdateFromModel(object sender, EventArgs e)
         {
@@ -66,8 +62,21 @@ namespace лаба_ооп4._2
         {
             if (e.KeyCode == Keys.Enter)
                 model.setB(Convert.ToInt32(textBox2.Text));
+        }
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            model.setB(Decimal.ToInt32(numericUpDown2.Value));
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            model.setB(Decimal.ToInt32(trackBar2.Value));
+        }
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
 
         }
+
     }
 
     public class Model
