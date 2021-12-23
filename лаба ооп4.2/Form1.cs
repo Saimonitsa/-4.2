@@ -72,9 +72,19 @@ namespace лаба_ооп4._2
         {
             model.setB(Decimal.ToInt32(trackBar2.Value));
         }
+        private void textBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                model.setC(Convert.ToInt32(textBox3.Text));
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            model.setC(Decimal.ToInt32(numericUpDown3.Value));
+        }
         private void trackBar3_Scroll(object sender, EventArgs e)
         {
-
+            model.setC(Decimal.ToInt32(trackBar3.Value));
         }
 
     }
