@@ -45,6 +45,29 @@ namespace лаба_ооп4._2
             trackBar3.Value = model.getC();
         }
 
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                model.setA(Convert.ToInt32(textBox1.Text));
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            model.setA(Decimal.ToInt32(numericUpDown1.Value));
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            model.setA(Decimal.ToInt32(trackBar1.Value));
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                model.setB(Convert.ToInt32(textBox2.Text));
+
+        }
     }
 
     public class Model
@@ -57,7 +80,6 @@ namespace лаба_ооп4._2
                 this.a = c;
             else
                 this.a = a;
-            Properties.Settings.Default.a = a;
             observes.Invoke(this, null);
 
         }
@@ -67,14 +89,12 @@ namespace лаба_ооп4._2
                 this.b = b;
             else
                 this.b = a;
-            Properties.Settings.Default.b = b;
             observes.Invoke(this, null);
 
         }
         public void setC(int c)
         {
             this.c = c;
-            Properties.Settings.Default.c = c;
             observes.Invoke(this, null);
 
         }
