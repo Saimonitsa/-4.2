@@ -12,9 +12,12 @@ namespace лаба_ооп4._2
 {
     public partial class Form1 : Form
     {
+        Model model;
         public Form1()
         {
             InitializeComponent();
+            model = new Model();
+            model.observes += new System.EventHandler(this.UpdateFromModel);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,6 +29,22 @@ namespace лаба_ооп4._2
         {
 
         }
+
+        private void UpdateFromModel(object sender, EventArgs e)
+        {
+            textBox1.Text = model.getA().ToString();
+            numericUpDown1.Value = model.getA();
+            trackBar1.Value = model.getA();
+
+            textBox2.Text = model.getB().ToString();
+            numericUpDown2.Value = model.getB();
+            trackBar2.Value = model.getB();
+
+            textBox3.Text = model.getC().ToString();
+            numericUpDown3.Value = model.getC();
+            trackBar3.Value = model.getC();
+        }
+
     }
 
     public class Model
@@ -59,6 +78,21 @@ namespace лаба_ооп4._2
             observes.Invoke(this, null);
 
         }
+        public int getA()
+        {
+            return a;
+        }
+
+        public int getB()
+        {
+            return b;
+        }
+
+        public int getC()
+        {
+            return c;
+        }
+
 
     }
 }
