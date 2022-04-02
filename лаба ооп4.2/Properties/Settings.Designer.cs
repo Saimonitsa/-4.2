@@ -40,10 +40,10 @@ namespace лаба_ооп4._2.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int b {
             get {
-                return ((int)(this["b"]));
+                return ((int)(this["a"]));
             }
             set {
-                this["b"] = value;
+                this["b"] = this["a"];
             }
         }
         

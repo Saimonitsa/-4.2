@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,25 +19,6 @@ namespace лаба_ооп4._2
             InitializeComponent();
             model = new Model();
             model.observes += new System.EventHandler(this.UpdateFromModel);
-            trackBar1.Scroll += trackBar1_Scroll;
-            trackBar2.Scroll += trackBar2_Scroll;
-            trackBar3.Scroll += trackBar3_Scroll;
-
-            textBox1.DataBindings.Add("Text", Properties.Settings.Default, "a");
-            textBox2.DataBindings.Add("Text", Properties.Settings.Default, "b");
-            textBox3.DataBindings.Add("Text", Properties.Settings.Default, "c");
-
-
-            numericUpDown1.DataBindings.Add("Text", Properties.Settings.Default, "a");
-            numericUpDown2.DataBindings.Add("Text", Properties.Settings.Default, "b");
-            numericUpDown3.DataBindings.Add("Text", Properties.Settings.Default, "c");
-
-            trackBar1.DataBindings.Add("Text", Properties.Settings.Default, "a");
-            trackBar2.DataBindings.Add("Text", Properties.Settings.Default, "b");
-            trackBar3.DataBindings.Add("Text", Properties.Settings.Default, "c");
-
-            this.FormClosing += (o, e) => Properties.Settings.Default.Save();
-
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -98,6 +80,43 @@ namespace лаба_ооп4._2
             numericUpDown3.Value = model.getC();
             trackBar3.Value = model.getC();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            FileStream f = new FileStream("d:/value.txt", FileMode.OpenOrCreate);
+            StreamReader reader = new StreamReader(f);
+            string[] data = reader.ReadToEnd().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+           
+            textBox3.Text = Convert.ToString(data[2]);
+            numericUpDown3.Value = Convert.ToInt32(data[2]);
+            trackBar3.Value = Convert.ToInt32(data[2]);
+
+            textBox1.Text=Convert.ToString(data[0]);
+            numericUpDown1.Value=Convert.ToInt32(data[0]);
+            trackBar1.Value= Convert.ToInt32(data[0]);
+
+            textBox2.Text = Convert.ToString(data[0]);
+            numericUpDown2.Value = Convert.ToInt32(data[0]);
+            trackBar2.Value = Convert.ToInt32(data[0]);
+
+
+            reader.Close();
+            f.Close();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FileStream f = new FileStream("d:/value.txt", FileMode.OpenOrCreate);
+            StreamWriter stream = new StreamWriter(f);
+            stream.WriteLine(textBox1.Text + " " + textBox2.Text + " " + textBox3.Text);
+            stream.Close();
+            f.Close();
+        }
     }
 
     public class Model
@@ -105,13 +124,14 @@ namespace лаба_ооп4._2
         int a, b, c;
         public System.EventHandler observes;
 
+
+
         public void setA(int a)
         {
             if (a > c)
                 this.a = c;
             else
                 this.a = a;
-            Properties.Settings.Default.a = a;
             observes.Invoke(this, null);
 
         }
@@ -121,14 +141,12 @@ namespace лаба_ооп4._2
                 this.b = b;
             else
                 this.b = a;
-            Properties.Settings.Default.b = b;
             observes.Invoke(this, null);
 
         }
         public void setC(int c)
         {
             this.c = c;
-            Properties.Settings.Default.c = c;
             observes.Invoke(this, null);
 
         }
